@@ -13,6 +13,7 @@ pipeline {
             steps {
                 echo 'Hello world! 2x' 
                 sh 'date'
+                sh 'docker --version'
             }
         }
 
