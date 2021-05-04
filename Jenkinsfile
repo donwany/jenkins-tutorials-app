@@ -1,5 +1,5 @@
 pipeline {
-    agent any 
+   agent { dockerfile true }
 
     stages {
         stage('Stage 1') {
@@ -14,9 +14,14 @@ pipeline {
                 echo 'Hello world! 2x' 
                 sh 'date'
             }
+    }
+
+    stage('Test') {
+                steps {
+                    sh 'node --version'
+                    sh 'svn --version'
+                }
         }
-
-
 
     }
 }
