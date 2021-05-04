@@ -7,5 +7,12 @@ pipeline {
                 sh 'date'
             }
         }
+
+         stage('Stage 2') {
+            steps {
+                echo 'Hello world! 2x' 
+                sh 'date'
+            }
+        }
     }
 }
