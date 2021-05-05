@@ -43,6 +43,7 @@ pipeline {
 
     tools {
         maven "mvn-install"
+        docker "docker-install"
     }
 
     stages {
@@ -58,6 +59,7 @@ pipeline {
             steps {
                 echo "Hello, ${PERSON}, nice to meet you."
                 sh "mvn --version"
+                sh "docker --version"
             }
         }
     }
