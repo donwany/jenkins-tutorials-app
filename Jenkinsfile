@@ -1,49 +1,58 @@
+// pipeline {
+//    agent any
+
+//    triggers{ cron('H/1 * * * *') }
+
+//     stages {
+//         stage('Stage 1') {
+//             steps {
+//                 echo 'Hello world!' 
+//                 sh 'date'
+//             }
+//         }
+
+//          stage('Stage 2') {
+//             steps {
+//                 echo 'Hello world! 2x' 
+//                 sh 'date'
+//             }
+//         }
+
+//         stage('Build') {
+//             steps {
+//                 echo 'Building..'
+//             }
+//         }
+//         stage('Test') {
+//             steps {
+//                 echo 'Testing..'
+//             }
+//         }
+//         stage('Deploy') {
+//             steps {
+//                 echo 'Deploying....'
+//             }
+//         }
+
+//     }
+// }
+
+
 pipeline {
-   agent any
-
-   triggers{ cron('H/1 * * * *') }
-
-   tools {
-        maven 'apache-maven-3.0.1' 
-    }
-
+    agent any
     stages {
-        stage('Stage 1') {
+        stage('Example') {
+            input {
+                message "Should we continue?"
+                ok "Yes, we should."
+                submitter "alice,bob"
+                parameters {
+                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+                }
+            }
             steps {
-                echo 'Hello world!' 
-                sh 'date'
+                echo "Hello, ${PERSON}, nice to meet you."
             }
         }
-
-         stage('Stage 2') {
-            steps {
-                echo 'Hello world! 2x' 
-                sh 'date'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-
-        stage('MVN') {
-            steps {
-                sh 'mvn --version'
-            }
-        }
-
-
     }
 }
