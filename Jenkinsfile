@@ -57,7 +57,6 @@ pipeline {
             }
             steps {
                 echo "Hello, ${PERSON}, nice to meet you."
-                sh "mvn install"
                 sh "mvn --version"
             }
         }
