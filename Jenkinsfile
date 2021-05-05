@@ -76,13 +76,13 @@ pipeline {
             }
         }
 
-        stage('Example Test') {
-            agent { docker 'openjdk:8-jre' } 
-            steps {
-                echo 'Hello, JDK'
-                sh 'java -version'
-            }
-        }
+        // stage('Example Test') {
+        //     agent { docker 'openjdk:8-jre' } 
+        //     steps {
+        //         echo 'Hello, JDK'
+        //         sh 'java -version'
+        //     }
+        // }
 
         stage('Parameters') {
             steps {
