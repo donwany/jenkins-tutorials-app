@@ -40,6 +40,11 @@
 
 pipeline {
     agent any
+
+    tools {
+        maven "mvn-install"
+    }
+
     stages {
         stage('Example') {
             input {
@@ -52,6 +57,8 @@ pipeline {
             }
             steps {
                 echo "Hello, ${PERSON}, nice to meet you."
+                sh "mvn install"
+                sh "mvn --version"
             }
         }
     }
